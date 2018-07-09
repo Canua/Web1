@@ -2,16 +2,24 @@
 <html lang="en" dir="ltr">
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
   <style media="screen">
     @import url('https://fonts.googleapis.com/css?family=Ubuntu:500&subset=latin-ext');
     * {
       margin: 0;
-      padding=0;
+      padding: 0;
       font-size: 100%;
       font: inherit;
       vertical-align: baseline;
       font-family: 'Ubuntu', sans-serif;
     }
+
+    .direct {
+      position: fixed;
+      right: 10px;
+      top: 25px;
+    }
+
 
     header {
       text-align: center;
@@ -20,9 +28,11 @@
     header .gnb {
       width: 100%;
       background-color: black;
+      position: fixed;
     }
 
     header .gnb ul {
+      position: relative;
       overflow: hidden;
       width: 1000px;
       height: 30px;
@@ -41,8 +51,10 @@
       color: white;
     }
 
-    img {
-      transition: transform 10s
+    header>img {
+      transition: transform 5s;
+      width: 150px;
+      height: 150px;
     }
 
     img:hover {
@@ -84,19 +96,52 @@
       background-color: rgb(107, 130, 186);
     }
 
-    #content {}
+    /* 그리드 레이아웃  */
+
+    #grid {
+      border: 3px solid rgb(228, 233, 236);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
 
     .Add_site {
-      width: 500px;
+      width: 200px;
       margin-left: 30px;
-      border: 0.5px solid rgb(198, 219, 255);
+      /* border: 0.5px solid rgb(198, 219, 255); */
+      border-right: 1px solid rgb(44, 42, 45);
     }
 
     .Add_site a {
       text-decoration: none;
       font-size: 18px;
       color: black;
-      7
+
+    }
+
+    .upload {
+      width: 100px;
+      margin-left: 20px;
+      margin-top: 250px;
+    }
+
+    /* img collection */
+
+    .img_box {
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .img_box>p {
+      font-size: 25px;
+    }
+
+    .img_box a {
+      display: none;
+    }
+
+    .img_box #pictures {
+      display: inline;
+
     }
 
     footer {
@@ -136,12 +181,38 @@
       clear: both;
       border: 0;
     }
+
+    /* 반응형 스크린 사이즈 */
+
+    @media(max-width: 800px) {
+      #grid {
+        display: block;
+      }
+      .Add_site {
+        border-right: none;
+        padding-bottom: 50px;
+        width: 300px;
+      }
+
+    }
   </style>
+  <link rel="stylesheet" href="jquery.lightbox.css" />
+  <script src="http://code.jquery.com/jquery-3.3.1.js">
+  </script>
+  <script src="jquery.lightbox.js">
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('a.light').lightBox();
+    });
+  </script>
   <meta charset="utf-8">
   <title>MY PAGE!</title>
 </head>
 
 <body>
+  <a href="#"><img class="direct" src="direction.png" alt="" width="30px" height="30px;"></a>
+
   <header>
     <div class="gnb">
       <ul>
@@ -156,24 +227,49 @@
         <li><a href="#" alt="">company</a></li>
       </ul>
     </div>
-
-    <h1><strong id ="Ba">C</strong>ollect MY PAGE !</h1><img class="img" src="Banner.png" alt="" height="150px" width="150px">
+    <br>
+    <h1><strong id ="Ba">C</strong>ollect MY PAGE !</h1><img id="image" src="banner.png">
     <hr />
-    <h1><strong>Welcome !</strong></h1>
+    <h1><strong>Welcome !</strong></h1><br />
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     <br />
   </header>
-  <div class="Add_site">
-    <h2 id="title"></h2>
-    <br />
+  <div id="grid">
 
-    <button id="add-btn">Add Web Site ! </button>
+    <div class="Add_site">
+      <h2 id="title"></h2>
+      <br />
 
-    <ul id="list">
-      <li><a href="http://www.naver.com" onclick="alert('네이버로 이동합니다.')">Naver</a></li>
-      <li><a href="https://www.google.com" onclick="alert('구글로 이동합니다.')">Google</a></li>
-      <li><a href="http://ce.tu.ac.kr" onclick="alert('동명대학교 컴퓨터공학과 사이트로 이동합니다.')">Computer Science</a></li>
+      <button id="add-btn">Add Web Site ! </button>
 
-    </ul>
+      <ul id="list">
+        <li><a href="http://www.naver.com" onclick="alert('네이버로 이동합니다.')">Naver</a></li>
+        <li><a href="https://www.google.com" onclick="alert('구글로 이동합니다.')">Google</a></li>
+        <li><a href="http://ce.tu.ac.kr" onclick="alert('동명대학교 컴퓨터공학과 사이트로 이동합니다.')">Computer Science</a></li>
+
+      </ul>
+    </div>
+    <div class="video">
+      <p>Today Music</p>
+      <iframe width="530" height="280" src="https://www.youtube.com/embed/1q_t6RNuH8c" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+
+    <div class="upload">
+      <form action="" method="post" enctype="multipart/form-data">
+        <input type="file" name="upload_file">
+        <input type="submit">
+
+      </form>
+    </div>
+  </div>
+
+  <div class="img_box">
+    <p>Colletd pictures</p>
+    <a class="light" href="image1.jpg" id="pictures"><img src="pictures.png" style="width : 100px; height : 100px "></a>
+    <a class="light" href="image2.jpg">LightBox</a>
+    <a class="light" href="image3.jpg">LightBox</a>
+
   </div>
   <footer>
     <div class="office_logo">office_logo</div>
@@ -183,12 +279,24 @@
 
   </footer>
   <div id="disqus_thread"></div>
-
   <script type="text/javascript">
+    window.onload = function() {
+      var count = 0;
+      var image = document.getElementById('image');
+      var frames = [
+        'Banner.png', 'jupiter.png', 'saturn.png',
+      ];
+      setInterval(function() {
+        image.src = frames[count % frames.length];
+        count = count + 1;
+      }, 10000 / 2);
+    };
     var title = document.getElementById('title');
     var list = document.getElementById('list');
     var li = list.getElementsByTagName('li');
     var addBtn = document.getElementById('add-btn');
+
+
 
     for (var i = 0; i < li.length; i++) {
       li[i].addEventListener('click', activeItem);

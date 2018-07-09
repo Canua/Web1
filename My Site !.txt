@@ -1,0 +1,26 @@
+https://canua.github.io/Web1/Web1.html
+
+
+실시간 웹
+1. ctrl + Shft + p
+2. Browser Plus : Open
+
+Beatify
+1. Ctrl + Alt + B
+
+Color Picker
+1. Ctrl + Alt + C
+
+- jQuery 라이브러리 다운 사이트
+1. https://jquery.com/
+2. http://code.jquery.com
+2-1. uncompressed 링크 복사
+
+
+- 라이트 박스 플러그인
+http://avioli.github.io/jquery-lightbox
+
+- Masonry 플러그인 (페이지 박스)
+https://masonry.desandro.com/
+
+유용한 jQuery 플러그인 50가지
